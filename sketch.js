@@ -10,9 +10,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight)
   paddle = new Paddle(160, 20)
   ball = new Ball()
-  for (let i = 0; i < 2; i++) {
-    bricks.push(new Brick())
-  }
+  createBricks(20)
   createText()
 }
 
@@ -72,9 +70,7 @@ function keyPressed() {
     playingGame = true
     win = false
     if (bricks.length === 0) {
-      for (let i = 0; i < 20; i++) {
-        bricks.push(new Brick())
-      }
+      createBricks(20)
     }
   }
 }
@@ -87,4 +83,10 @@ function keyReleased() {
 function createText() {
   winText = createP('YOU WIN')
   winText.position(width / 2 - 50, 80)
+}
+
+function createBricks(count = 20) {
+  for (let i = 0; i < count; i++) {
+    bricks.push(new Brick())
+  }
 }
